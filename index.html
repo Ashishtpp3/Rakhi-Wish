@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <script type="text/javascript">
 	atOptions = {
 		'key' : '9f5ed8c42fb0de51562560e647d5668f',
@@ -13,380 +13,381 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Raksha Bandhan!</title>
+    <title>रक्षा बंधन की शुभकामनाएँ</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@700&family=Poppins:wght@400;600&family=Dancing+Script:wght@700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Yatra+One&display=swap');
+
+        :root {
+            --primary-color: #D81B60; /* Festive Pink */
+            --secondary-color: #FFB300; /* Gold/Amber */
+            --light-color: #FFFFFF;
+            --dark-color: #4A148C; /* Deep Purple Text */
+            --bg-color: #FFF8E1; /* Light Cream */
+            --whatsapp-color: #25D366;
+        }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
-            text-align: center;
             margin: 0;
-            padding: 20px;
-            overflow-x: hidden;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: var(--dark-color);
             position: relative;
+            overflow: hidden;
+            padding: 1rem 0;
         }
-        
-        /* Popping Hearts Background */
-        .heart-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+
+        .petal-container {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             pointer-events: none;
             z-index: 0;
         }
 
-        .heart {
+        .petal {
             position: absolute;
-            width: 25px;
-            height: 25px;
-            transform: rotate(-45deg);
-            animation: floatUp 8s linear forwards;
+            background: var(--primary-color);
+            border-radius: 50% 0;
+            width: 20px; height: 15px;
+            opacity: 0.7;
+            animation: fall linear infinite;
         }
 
-        .heart::before,
-        .heart::after {
-            content: '';
-            position: absolute;
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
+        @keyframes fall {
+            to {
+                transform: translateY(105vh) rotate(360deg);
+                opacity: 0;
+            }
         }
 
-        .heart::before { top: -12px; left: 0; }
-        .heart::after { top: 0; left: 12px; }
-
-        /* Darker, Multi-Colored Hearts */
-        .heart-color-1, .heart-color-1::before, .heart-color-1::after { background: #e91e63; } /* Deep Pink */
-        .heart-color-2, .heart-color-2::before, .heart-color-2::after { background: #ff9800; } /* Festive Orange */
-        .heart-color-3, .heart-color-3::before, .heart-color-3::after { background: #9c27b0; } /* Royal Purple */
-        .heart-color-4, .heart-color-4::before, .heart-color-4::after { background: #c2185b; } /* Magenta */
-
-
-        /* Decoration elements */
-        .decoration {
-            position: fixed;
-            background-size: cover;
-            opacity: 0.15;
-            pointer-events: none;
-            z-index: 1;
-        }
-        .deco-top-left {
-            top: -20px;
-            left: -20px;
-            width: 250px;
-            height: 250px;
-            background-image: url('https://www.transparentpng.com/thumb/indian-wedding/indian-wedding-background-design-photo-21.png');
-            transform: rotate(180deg);
-        }
-        .deco-bottom-right {
-            bottom: -50px;
-            right: -50px;
-            width: 300px;
-            height: 300px;
-            background-image: url('https://www.transparentpng.com/thumb/indian-wedding/indian-wedding-background-design-photo-21.png');
-        }
-
-        .container {
-            max-width: 500px;
-            margin: 20px auto;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            padding: 40px;
-            border-radius: 30px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        .card {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 90%;
+            z-index: 10;
             position: relative;
-            z-index: 2;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.5);
         }
 
-        h1 {
-            font-family: 'Tangerine', cursive;
-            color: #d81b60;
-            font-size: 5em;
-            margin: 0 0 15px 0;
-            font-weight: 700;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-        }
-        
         .image-container {
             position: relative;
             display: inline-block;
-            margin-bottom: 25px;
-            animation: zoomIn 1s ease-in-out;
+            margin-bottom: 1rem;
+            border-radius: 18px;
+            padding: 5px;
+            background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
         }
-
-        .rakhi-gif {
-            width: 100%;
-            max-width: 260px;
-            border-radius: 50%;
+        
+        #rakhi-image {
             display: block;
-            box-shadow: 0 0 15px 10px rgba(255, 255, 255, 0.7);
-            border: 5px solid #fff;
+            max-width: 100%;
+            height: auto;
+            max-height: 250px;
+            border-radius: 15px;
+            position: relative;
+        }
+        
+        .glitter-container {
+            position: absolute;
+            top: 5px; left: 5px; right: 5px; bottom: 5px;
+            border-radius: 15px;
+            overflow: hidden;
+            pointer-events: none;
         }
 
         .glitter {
             position: absolute;
-            width: 8px;
-            height: 8px;
-            background: transparent;
+            background: white;
             border-radius: 50%;
-            opacity: 0;
-            animation: sparkle 2s infinite;
+            width: 4px; height: 4px;
+            animation: sparkle-effect linear infinite;
+            box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px var(--secondary-color);
         }
-        
-        .glitter-type-1 { box-shadow: 0 0 7px 2px #fff, 0 0 12px 4px #ff8fab, 0 0 18px 6px #f8bbd0; }
-        .glitter-type-2 { box-shadow: 0 0 7px 2px #fff, 0 0 12px 4px #ffd54f, 0 0 18px 6px #ffecb3; }
-        .glitter-type-3 { box-shadow: 0 0 7px 2px #fff, 0 0 12px 4px #b39ddb, 0 0 18px 6px #d1c4e9; }
 
-        p {
-            color: #333;
-            font-size: 1.15em;
-            line-height: 1.8;
-            margin-bottom: 30px;
-            animation: fadeInUp 1s ease-in-out forwards;
-            opacity: 0;
+        @keyframes sparkle-effect {
+            0% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1.5); opacity: 1; }
+            100% { transform: scale(0); opacity: 0; }
         }
-        
-        #recipient-name-container { display: inline-block; }
-        
-        .recipient-char {
-            display: inline-block;
-            font-family: 'Dancing Script', cursive;
-            font-weight: 700;
-            color: #c2185b;
-            font-size: 1.6em;
-            opacity: 0;
-            animation: dropIn 0.5s forwards;
+
+        .greeting-text {
+            font-family: 'Yatra One', cursive;
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin: 0.5rem 0;
+            font-weight: 400;
+        }
+
+        #sender-name-display {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--dark-color);
+            margin: 0.5rem 0 1.5rem 0;
+            min-height: 2rem;
+        }
+
+        .input-label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: block;
+            color: var(--dark-color);
         }
 
         .name-input {
-            width: 85%;
-            padding: 15px;
-            border: none;
-            border-bottom: 3px solid #f06292;
-            margin-bottom: 25px;
-            font-size: 1.1em;
-            text-align: center;
-            font-family: 'Poppins', sans-serif;
-            background-color: #fff5f7;
-            border-radius: 10px 10px 0 0;
-            transition: all 0.3s;
+            width: calc(100% - 24px);
+            padding: 12px;
+            border-radius: 10px;
+            border: 2px solid #ddd;
+            background: #fff;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: #333;
+            transition: border-color 0.3s, box-shadow 0.3s;
         }
-        
+
         .name-input:focus {
             outline: none;
-            border-bottom: 3px solid #d81b60;
-            background-color: #ffffff;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 8px rgba(216, 27, 96, 0.2);
         }
 
-        .btn {
-            background: linear-gradient(45deg, #f5508a, #f783ac);
-            color: #fff;
-            padding: 16px 40px;
+        .generate-button {
+            background-image: linear-gradient(45deg, var(--primary-color), #f06292);
+            color: var(--light-color);
             border: none;
-            border-radius: 50px;
-            font-size: 1.1em;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            box-shadow: 0 8px 25px rgba(233, 30, 99, 0.3);
+            padding: 12px 25px;
+            font-size: 1.1rem;
             font-weight: 600;
-            transition: all 0.3s ease;
-            margin: 5px;
-        }
-        
-        .btn.back-btn {
-             background: linear-gradient(45deg, #bdbdbd, #9e9e9e);
-             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
         }
 
-        .btn:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 12px 30px rgba(233, 30, 99, 0.4);
+        .generate-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(216, 27, 96, 0.3);
         }
         
-        .btn.back-btn:hover {
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        #popup {
+        #link-container {
+            margin-top: 1.5rem;
             display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(8px);
-            z-index: 10;
-            justify-content: center;
-            align-items: center;
-            animation: fadeIn 0.3s ease;
         }
-        
-        #popup-content {
-            background: #fff;
-            padding: 40px;
-            border-radius: 25px;
-            text-align: center;
-            position: relative;
-            animation: slideInUp 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-            max-width: 90%;
-            width: 480px;
-        }
-        
-        #popup-controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        @keyframes floatUp {
-            from { transform: translateY(100vh) rotate(-45deg); opacity: 1; }
-            to { transform: translateY(-10vh) rotate(-45deg); opacity: 0; }
-        }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; }}
-        @keyframes sparkle {
-            0%, 100% { opacity: 0; transform: scale(0.5); }
-            50% { opacity: 1; transform: scale(1.2); }
-        }
-        @keyframes zoomIn { from { opacity: 0; transform: scale(0.7); } to { opacity: 1; transform: scale(1); }}
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); }}
-        @keyframes slideInUp { from { transform: translateY(50px) scale(0.95); opacity: 0; } to { transform: translateY(0) scale(1); opacity: 1; }}
-        @keyframes dropIn { to { opacity: 1; transform: translateY(0) scale(1); }}
 
+        .link-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .share-link {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px dashed var(--primary-color);
+            background-color: #fce4ec;
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            border-radius: 8px;
+            word-wrap: break-word;
+        }
+        
+        #copy-btn {
+            padding: 10px;
+            border: none;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: opacity 0.2s;
+        }
+        #copy-btn:hover { opacity: 0.8; }
+        #copy-btn svg { width: 20px; height: 20px; fill: white; }
+
+        #whatsapp-btn {
+            background-color: var(--whatsapp-color);
+            width: 100%;
+            margin-top: 10px;
+            padding: 12px 20px;
+            border: none;
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        #whatsapp-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.4);
+        }
+        #whatsapp-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+
+        @media (max-width: 480px) {
+            .card { padding: 1.5rem; }
+            .greeting-text { font-size: 2.5rem; }
+            #sender-name-display { font-size: 1.3rem; }
+            #rakhi-image { max-height: 200px; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="heart-container" id="heart-container"></div>
-    <div class="decoration deco-top-left"></div>
-    <div class="decoration deco-bottom-right"></div>
+    <div class="petal-container" id="petal-container"></div>
 
-    <div class="container">
-        <h1>Happy Raksha Bandhan!</h1>
-        <div class="image-container" id="image-container">
-            <img src="raksha-bandhan.jpg" alt="Happy Raksha Bandhan" class="rakhi-gif">
+    <div class="card">
+        <div class="image-container">
+            <img id="rakhi-image" src="raksha-bandhan.jpg" alt="रक्षा बंधन">
+            <div class="glitter-container" id="glitter-container"></div>
         </div>
-        <p id="greeting-message">Sending a thread of love to celebrate our special bond. May our connection grow stronger and our hearts fonder. Wishing you a joyful and blessed Raksha Bandhan!</p>
-        <button class="btn" onclick="openPopup()">✨ Create a Personalized Wish ✨</button>
-    </div>
+        
+        <h1 class="greeting-text">रक्षा बंधन</h1>
+        <p id="sender-name-display"></p>
 
-    <div id="popup">
-        <div id="popup-content">
-            <h2 style="font-family: 'Tangerine', cursive; color: #d81b60; font-size: 3.5em; margin-top:0;">Share a Special Wish!</h2>
-            <p style="color: #555; margin-bottom: 20px;">Enter your name to create a magical Rakhi greeting for your sibling.</p>
-            <input type="text" id="senderName" class="name-input" placeholder="Enter Your Name Here">
-            <div id="popup-controls">
-                <button class="btn back-btn" onclick="closePopup()">Back</button>
-                <button class="btn" onclick="generateLink()">Generate Link</button>
+        <div class="form-container">
+            <label for="name" class="input-label">अपनी शुभकामनाएँ भेजने के लिए नाम लिखें:</label>
+            <input type="text" id="name" class="name-input" placeholder="आपका नाम">
+            <button class="generate-button" onclick="generateLink()">लिंक बनाएँ</button>
+        </div>
+
+        <div id="link-container">
+            <p class="input-label" style="margin-bottom: 0.5rem;">इस लिंक को कॉपी करें:</p>
+            <div class="link-wrapper">
+                <input type="text" id="share-link" class="share-link" readonly>
+                <button id="copy-btn" onclick="copyLink()" title="कॉपी करें">
+                    <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg>
+                </button>
             </div>
-            <div id="share-section" style="display: none; margin-top: 25px;">
-                <p>Your personalized link is ready! Share the magic on WhatsApp.</p>
-                <a id="whatsapp-share-link" href="#" class="btn" target="_blank" style="background: linear-gradient(45deg, #25D366, #128C7E); box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);">Share on WhatsApp</a>
-            </div>
+            <button id="whatsapp-btn" onclick="shareOnWhatsApp()">
+                <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.46 3.48 1.32 4.95L2 22l5.25-1.38c1.41.81 3.02 1.29 4.79 1.29h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zM9.51 7.31c.21-.49.43-.52.61-.53.16 0 .33-.02.49-.02.21 0 .46.07.68.39.27.39.87 1.07.87 2.19s-.02 1.25-.13 1.41c-.11.16-.27.24-.51.41-.24.16-.51.27-.7.4-.24.16-.42.24-.58.39-.16.16-.33.35-.45.56-.12.21-.24.45-.1.66.13.21.58.66 1.19 1.22.77.71 1.45 1.02 1.66 1.1.21.07.33.05.46-.07.16-.13.68-.78.87-.99.19-.21.39-.16.63-.1.24.07 1.55.73 1.82.87.27.13.45.21.51.33.05.11.02.63-.13.78-.16.16-1.02.97-1.46 1.15-.43.19-.82.21-1.25.11-.43-.1-2.61-1-3.75-2.07s-1.88-2.28-1.99-2.39c-.11-.11-.43-.22-.61-.43s-1.09-1.2-1.09-2.32c0-1.02.66-1.55.85-1.78z"></path></svg>
+                <span>व्हाट्सएप पर शेयर करें</span>
+            </button>
         </div>
     </div>
 
     <script>
-        // --- ANIMATION SCRIPTS ---
-
-        function createHearts() {
-            const heartContainer = document.getElementById('heart-container');
-            const heartColors = ['heart-color-1', 'heart-color-2', 'heart-color-3', 'heart-color-4'];
-            
-            setInterval(() => {
-                const heart = document.createElement('div');
-                const randomColor = heartColors[Math.floor(Math.random() * heartColors.length)];
-                
-                heart.classList.add('heart', randomColor); // Add base class and random color class
-                
-                heart.style.left = `${Math.random() * 100}vw`;
-                heart.style.animationDuration = `${Math.random() * 3 + 5}s`;
-                heart.style.opacity = Math.random() * 0.7 + 0.3; // Make them solid but with varied opacity
-                heart.style.transform = `scale(${Math.random() * 0.8 + 0.5}) rotate(-45deg)`;
-                
-                heartContainer.appendChild(heart);
-
-                setTimeout(() => {
-                    heart.remove();
-                }, 8000);
-            }, 300); // Create hearts slightly faster for a fuller effect
-        }
-
-        function createGlitters() {
-            const imageContainer = document.getElementById('image-container');
-            setInterval(() => {
-                const glitter = document.createElement('div');
-                const type = Math.ceil(Math.random() * 3);
-                glitter.classList.add('glitter', `glitter-type-${type}`);
-                glitter.style.top = `${Math.random() * 100}%`;
-                glitter.style.left = `${Math.random() * 100}%`;
-                glitter.style.animationDelay = `${Math.random() * 2}s`;
-                imageContainer.appendChild(glitter);
-                setTimeout(() => glitter.remove(), 2000);
-            }, 150);
-        }
-
-        function animateRecipientName(name) {
-            const container = document.createElement('span');
-            container.id = 'recipient-name-container';
-            name.split('').forEach((char, index) => {
-                const span = document.createElement('span');
-                span.className = 'recipient-char';
-                span.innerHTML = char === ' ' ? ' ' : char;
-                span.style.animationDelay = `${index * 0.08 + 0.5}s`;
-                container.appendChild(span);
-            });
-            return container;
-        }
-
-        // --- GREETING CARD LOGIC ---
-
+        // On Page Load
         window.onload = function() {
-            createHearts(); // Call the hearts function
             createGlitters();
-
+            createPetals();
+            
             const urlParams = new URLSearchParams(window.location.search);
-            const name = urlParams.get('name');
-            if (name) {
-                const greetingMessage = document.getElementById('greeting-message');
-                const animatedName = animateRecipientName(decodeURIComponent(name));
-                greetingMessage.innerHTML = 'This Raksha Bandhan, ';
-                greetingMessage.appendChild(animatedName);
-                greetingMessage.append(' is sending you a thread of love that binds our hearts together. Happy Raksha Bandhan!');
+            const senderName = urlParams.get('from');
+
+            if (senderName) {
+                const decodedName = decodeURIComponent(senderName.replace(/\+/g, ' '));
+                document.getElementById('sender-name-display').innerHTML = `की ओर से शुभकामनाएँ <br>~ ${decodedName}`;
+            } else {
+                document.getElementById('sender-name-display').textContent = 'की हार्दिक शुभकामनाएँ!';
             }
         };
-
-        function openPopup() {
-            document.getElementById('popup').style.display = 'flex';
+        
+        function createGlitters() {
+            const container = document.getElementById('glitter-container');
+            if(!container) return;
+            const glitterCount = 30;
+            for (let i = 0; i < glitterCount; i++) {
+                const glitter = document.createElement('div');
+                glitter.className = 'glitter';
+                glitter.style.top = Math.random() * 100 + '%';
+                glitter.style.left = Math.random() * 100 + '%';
+                glitter.style.animationDuration = Math.random() * 2 + 1 + 's';
+                glitter.style.animationDelay = Math.random() * 3 + 's';
+                container.appendChild(glitter);
+            }
         }
         
-        function closePopup() {
-            document.getElementById('popup').style.display = 'none';
+        function createPetals() {
+            const petalContainer = document.getElementById('petal-container');
+            if(!petalContainer) return;
+            for(let i = 0; i < 20; i++) {
+                const petal = document.createElement('div');
+                petal.className = 'petal';
+                petal.style.left = Math.random() * 100 + 'vw';
+                petal.style.animationDuration = Math.random() * 5 + 8 + 's';
+                petal.style.animationDelay = Math.random() * 5 + 's';
+                petalContainer.appendChild(petal);
+            }
         }
 
         function generateLink() {
-            const senderName = document.getElementById('senderName').value;
-            if (senderName.trim() === "") {
-                alert("Please enter your name!");
+            const nameInput = document.getElementById('name').value.trim();
+            if (nameInput === "") {
+                alert("कृपया अपना नाम दर्ज करें।");
                 return;
             }
 
-            // !!! IMPORTANT !!!
-            // REPLACE 'your-github-username.github.io/your-repository-name/' WITH YOUR ACTUAL GITHUB PAGES URL
-            const baseUrl = 'https://your-github-username.github.io/your-repository-name/'; // <-- IMPORTANT: CHANGE THIS
-            const personalizedLink = `${baseUrl}?name=${encodeURIComponent(senderName)}`;
+            const encodedName = encodeURIComponent(nameInput);
+            const baseURL = window.location.href.split('?')[0];
+            const shareableLink = `${baseURL}?from=${encodedName}`;
 
-            const message = `💖 You've received a magical Raksha Bandhan wish from ${senderName}! 💖\n\nCheck it out: ${personalizedLink}`;
-            const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
+            const linkContainer = document.getElementById('link-container');
+            const shareLinkInput = document.getElementById('share-link');
+            
+            shareLinkInput.value = shareableLink;
+            linkContainer.style.display = 'block';
+        }
+        
+        function copyLink() {
+            const shareLinkInput = document.getElementById('share-link');
+            const copyBtn = document.getElementById('copy-btn');
+            const originalContent = copyBtn.innerHTML;
 
-            document.getElementById('whatsapp-share-link').href = whatsappUrl;
-            document.getElementById('share-section').style.display = 'block';
+            shareLinkInput.select();
+            shareLinkInput.setSelectionRange(0, 99999);
+
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(shareLinkInput.value)
+                    .then(() => {
+                        copyBtn.innerHTML = 'कॉपी हुआ!';
+                        setTimeout(() => { copyBtn.innerHTML = originalContent; }, 2000);
+                    })
+                    .catch(() => tryCopyLegacy(originalContent));
+            } else {
+                tryCopyLegacy(originalContent);
+            }
+
+            function tryCopyLegacy(originalContent) {
+                try {
+                    document.execCommand('copy');
+                    copyBtn.innerHTML = 'कॉपी हुआ!';
+                    setTimeout(() => { copyBtn.innerHTML = originalContent; }, 2000);
+                } catch (err) {
+                    alert('लिंक कॉपी नहीं हो सका। कृपया इसे मैन्युअल रूप से कॉपी करें।');
+                }
+            }
+        }
+
+        function shareOnWhatsApp() {
+            const link = document.getElementById('share-link').value;
+            if (!link) {
+                alert("कृपया पहले एक लिंक बनाएं!");
+                return;
+            }
+            const message = `रक्षा बंधन की हार्दिक शुभकामनाएँ! 💖\n\nमैंने आपके लिए कुछ खास भेजा है, देखने के लिए नीचे दिए लिंक पर क्लिक करें:\n\n${link}`;
+            const whatsappURL = `https://wa.me/?text=${encodeURIComponent(message)}`;
+            window.open(whatsappURL, '_blank');
         }
     </script>
-
 </body>
 </html>
 <script type="text/javascript">
