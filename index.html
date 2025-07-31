@@ -1,255 +1,354 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Happy Raksha Bandhan</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(135deg, #fff0f5, #ffe4e1);
-      font-family: 'Segoe UI', sans-serif;
-      overflow-x: hidden;
-      position: relative;
-      text-align: center;
-    }
-    /* Top Ad */
-    #top-ad, #bottom-ad {
-      position: fixed;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 468px;
-      height: 60px;
-      z-index: 9999;
-    }
-    #top-ad {
-      top: 0;
-    }
-    #bottom-ad {
-      bottom: 0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raksha Bandhan ki Shubhkamnaye</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Hind:wght@700&family=Poppins:wght@600&display=swap');
 
-    /* Animated Header */
-    .flash-text {
-      font-size: 2rem;
-      color: #fff;
-      background: linear-gradient(90deg, #ff69b4, #ff1493, #ff69b4);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: flash 2s infinite;
-      margin-top: 80px;
-    }
-    @keyframes flash {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
+        :root {
+            --primary-color: #FF6B6B;
+            --secondary-color: #FFD93D;
+            --text-color: #4A4A4A;
+            --bg-color: #FFF8E1;
+            --golden-color: #FFD700;
+        }
 
-    .container {
-      margin-top: 20px;
-      padding-bottom: 100px;
-    }
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #FF9A8B 0%, #FF6A88 50%, #FF99AC 100%);
+            color: var(--text-color);
+            text-align: center;
+            overflow-x: hidden;
+            position: relative;
+        }
 
-    .animated-image {
-      width: 90%;
-      max-width: 400px;
-      border-radius: 20px;
-      box-shadow: 0 0 20px rgba(255, 182, 193, 0.8);
-      animation: sparkle 2s infinite alternate;
-    }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 2;
+        }
 
-    @keyframes sparkle {
-      from { filter: drop-shadow(0 0 5px gold); }
-      to { filter: drop-shadow(0 0 20px hotpink); }
-    }
+        .ad-container {
+            margin: 15px auto;
+            width: 468px;
+            max-width: 100%;
+        }
 
-    .name-box {
-      margin: 30px auto;
-      max-width: 400px;
-    }
+        .header-text {
+            font-family: 'Hind', sans-serif;
+            font-size: 2.5em;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+            animation: flash 2s infinite linear;
+        }
 
-    input[type="text"] {
-      width: 80%;
-      padding: 12px;
-      font-size: 1.1rem;
-      border: 2px solid hotpink;
-      border-radius: 10px;
-      outline: none;
-      margin-bottom: 10px;
-    }
+        @keyframes flash {
+            0%, 100% { color: var(--primary-color); transform: scale(1); }
+            50% { color: var(--secondary-color); transform: scale(1.05); }
+        }
 
-    button {
-      padding: 10px 15px;
-      margin: 5px;
-      border: none;
-      background: #ff1493;
-      color: white;
-      border-radius: 10px;
-      cursor: pointer;
-      font-weight: bold;
-    }
+        .image-container {
+            position: relative;
+            margin: 20px auto;
+            max-width: 350px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
 
-    button:hover {
-      background: #c71585;
-    }
+        #rakhi-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
 
-    .greeting {
-      margin-top: 20px;
-      font-size: 1.4rem;
-      font-weight: bold;
-      background: linear-gradient(45deg, gold, orange);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: bounce 1s infinite;
-    }
+        .sparkle-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
 
-    @keyframes bounce {
-      0%   { transform: scale(1); }
-      50%  { transform: scale(1.1); }
-      100% { transform: scale(1); }
-    }
+        .sparkle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--golden-color);
+            border-radius: 50%;
+            opacity: 0;
+            animation: sparkle-anim 1.5s infinite;
+            box-shadow: 0 0 10px var(--golden-color), 0 0 20px white;
+        }
 
-    /* Floating hearts */
-    .hearts {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-      z-index: 0;
-    }
+        @keyframes sparkle-anim {
+            0% { transform: scale(0) rotate(0deg); opacity: 0.5; }
+            50% { transform: scale(1.5) rotate(180deg); opacity: 1; }
+            100% { transform: scale(0) rotate(360deg); opacity: 0; }
+        }
 
-    .heart {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: rgba(255, 105, 180, 0.5);
-      transform: rotate(45deg);
-      animation: float 6s linear infinite;
-    }
+        #greeting-message {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: var(--golden-color);
+            margin: 25px 0;
+            text-shadow: 1px 1px 0 #c08d00, 2px 2px 0 #a07400, 3px 3px 0 #805b00, 4px 4px 8px rgba(0,0,0,0.5);
+            animation: animate-3d 1.5s ease-in-out infinite alternate;
+            display: none; /* Initially hidden */
+        }
 
-    .heart::before,
-    .heart::after {
-      content: '';
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: rgba(255, 105, 180, 0.5);
-      border-radius: 50%;
-    }
+        @keyframes animate-3d {
+            from { transform: rotateY(-15deg) rotateX(5deg) scale(1); }
+            to { transform: rotateY(15deg) rotateX(-5deg) scale(1.05); }
+        }
 
-    .heart::before {
-      top: -10px;
-      left: 0;
-    }
+        .form-container {
+            margin-top: 20px;
+        }
 
-    .heart::after {
-      left: -10px;
-      top: 0;
-    }
+        #name-input {
+            width: 80%;
+            padding: 12px;
+            border: 2px solid var(--primary-color);
+            border-radius: 10px;
+            font-size: 1.1em;
+            text-align: center;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+        }
 
-    @keyframes float {
-      0% {
-        transform: translateY(100vh) rotate(45deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-10vh) rotate(45deg);
-        opacity: 0;
-      }
-    }
-  </style>
+        #name-input:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 10px var(--secondary-color);
+        }
+        
+        #generate-btn {
+            display: block;
+            width: 85%;
+            margin: 15px auto 0;
+            padding: 15px;
+            background: linear-gradient(45deg, var(--primary-color), #f78fb3);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 15px rgba(255, 107, 139, 0.5);
+        }
+
+        #generate-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 139, 0.7);
+        }
+
+        #link-output {
+            margin-top: 15px;
+            font-size: 0.9em;
+            color: var(--text-color);
+            word-wrap: break-word;
+        }
+
+        /* Popping Hearts Background */
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            opacity: 0;
+            animation: pop-heart 5s linear infinite;
+            z-index: 1;
+        }
+        .heart::before, .heart::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 10px;
+            height: 16px;
+            background: rgba(255, 107, 139, 0.5);
+            border-radius: 5px 5px 0 0;
+        }
+        .heart::before {
+            left: 10px;
+            transform: rotate(-45deg);
+            transform-origin: 0 100%;
+        }
+        .heart::after {
+            left: 0;
+            transform: rotate(45deg);
+            transform-origin: 100% 100%;
+        }
+
+        @keyframes pop-heart {
+            0% { transform: translateY(0) scale(0.5); opacity: 0; }
+            50% { opacity: 0.7; }
+            100% { transform: translateY(-100vh) scale(1.2); opacity: 0; }
+        }
+        
+        /* Touch Animation */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 217, 61, 0.5);
+            transform: scale(0);
+            animation: ripple-effect 0.6s linear;
+            pointer-events: none;
+        }
+
+        @keyframes ripple-effect {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+    </style>
 </head>
 <body>
 
-<!-- Adsterra Top Ad -->
-<div id="top-ad">
-  <script type="text/javascript">
-    atOptions = {
-      'key' : '9f5ed8c42fb0de51562560e647d5668f',
-      'format' : 'iframe',
-      'height' : 60,
-      'width' : 468,
-      'params' : {}
-    };
-  </script>
-  <script type="text/javascript" src="//furtivelywhipped.com/9f5ed8c42fb0de51562560e647d5668f/invoke.js"></script>
-</div>
-
-<h1 class="flash-text">🎉 Happy Raksha Bandhan 🎉</h1>
-
-<div class="container">
-  <img src="raksha-bandhan.jpg" alt="Raksha Bandhan" class="animated-image" onclick="triggerHearts()" />
-
-  <div class="name-box">
-    <input type="text" id="nameInput" placeholder="Apna naam likhein..." />
-    <div>
-      <button onclick="generateLink()">Link Copy</button>
-      <button onclick="shareWhatsApp()">WhatsApp</button>
+    <!-- ====================================================== -->
+    <!-- Adsterra Top Banner Ad -->
+    <!-- ====================================================== -->
+    <div class="ad-container">
+        <script type="text/javascript">
+            atOptions = {
+                'key' : '9f5ed8c42fb0de51562560e647d5668f',
+                'format' : 'iframe',
+                'height' : 60,
+                'width' : 468,
+                'params' : {}
+            };
+        </script>
+        <script type="text/javascript" src="//furtivelywhipped.com/9f5ed8c42fb0de51562560e647d5668f/invoke.js"></script>
     </div>
-  </div>
+    <!-- ====================================================== -->
 
-  <div id="greeting" class="greeting"></div>
-</div>
+    <div class="container">
 
-<!-- Hearts background -->
-<div class="hearts" id="hearts-container"></div>
+        <h1 class="header-text">Happy Raksha Bandhan</h1>
 
-<!-- Adsterra Bottom Ad -->
-<div id="bottom-ad">
-  <script type="text/javascript">
-    atOptions = {
-      'key' : '9f5ed8c42fb0de51562560e647d5668f',
-      'format' : 'iframe',
-      'height' : 60,
-      'width' : 468,
-      'params' : {}
-    };
-  </script>
-  <script type="text/javascript" src="//furtivelywhipped.com/9f5ed8c42fb0de51562560e647d5668f/invoke.js"></script>
-</div>
+        <div id="greeting-message"></div>
 
-<script>
-  // Handle greeting display from URL
-  window.onload = () => {
-    const params = new URLSearchParams(window.location.search);
-    const from = params.get("from");
-    if (from) {
-      document.getElementById("greeting").innerHTML = `<span style="font-size: 1.8rem; font-weight: bold; color: gold; text-shadow: 2px 2px 5px #d2691e;">${from} की तरफ से आपको Raksha Bandhan की ढेरों शुभकामनाएँ 💝</span>`;
-    }
-  };
+        <div class="image-container">
+            <!-- अपनी इमेज का BASE64 कोड यहाँ पेस्ट करें -->
+            <img id="rakhi-image" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxISEhUSEhIVFRUVFRUVFRUVFRUVFRUVFRUWFhUVFRUYHSggGBolHRUVITEhJSkrLi4uFx8zODMtNygtLisBCgoKDg0OGhAQGi0lHyUtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAKgBLAMBIgACEQEDEQH/xwaGAAEBAQEBAQEAAAAAAAAAAAADAgEEBQYH/8QANxABAAIBAgMGAwYGAwEAAAAAAAECEQMhBBIxQVEFYXETIoGRoTJSscHR8FLhBgcjM2JyI0OCkv/EABoBAQEBAQEBAQAAAAAAAAAAAAABAgMEBQb/xAAhEQEBAAICAgMBAQEAAAAAAAAAAQIRMUESIQNRYQQiE//aAAwDAQACEQMRAD8A/RBEQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREaHR0dCdVUREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQereDEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQereDEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQereDEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQereDEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQereDEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQ-22_DERE2_2" alt="Raksha Bandhan Image" />
+            <div class="sparkle-container"></div>
+        </div>
 
-  function generateLink() {
-    const name = document.getElementById("nameInput").value.trim();
-    if (!name) return alert("कृपया अपना नाम भरें");
-    const link = `${window.location.origin + window.location.pathname}?from=${encodeURIComponent(name)}`;
-    navigator.clipboard.writeText(link);
-    alert("Link copied: " + link);
-  }
+        <div class="form-container">
+            <p>नीचे बॉक्स में अपना नाम लिखें और शुभकामनाओं का लिंक बनाएं:</p>
+            <input type="text" id="name-input" placeholder="यहाँ अपना नाम लिखें">
+            <button id="generate-btn">व्हाट्सएप पर शेयर करें</button>
+            <div id="link-output"></div>
+        </div>
 
-  function shareWhatsApp() {
-    const name = document.getElementById("nameInput").value.trim();
-    if (!name) return alert("कृपया नाम भरें");
-    const link = `${window.location.origin + window.location.pathname}?from=${encodeURIComponent(name)}`;
-    const text = `🎉 ${name} की तरफ से आपको Raksha Bandhan की ढेरों शुभकामनाएँ! 🎁\n\nदेखें: ${link}`;
-    window.open(`https://wa.me/?text=${encodeURIComponent(text)}`);
-  }
+    </div>
+    
+    <!-- ====================================================== -->
+    <!-- Adsterra Bottom Banner Ad -->
+    <!-- ====================================================== -->
+    <div class="ad-container">
+        <script type="text/javascript">
+            atOptions = {
+                'key' : '9f5ed8c42fb0de51562560e647d5668f',
+                'format' : 'iframe',
+                'height' : 60,
+                'width' : 468,
+                'params' : {}
+            };
+        </script>
+        <script type="text/javascript" src="//furtivelywhipped.com/9f5ed8c42fb0de51562560e647d5668f/invoke.js"></script>
+    </div>
+    <!-- ====================================================== -->
 
-  // Create random hearts
-  function triggerHearts() {
-    for (let i = 0; i < 10; i++) {
-      const heart = document.createElement('div');
-      heart.className = 'heart';
-      heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
-      document.getElementById('hearts-container').appendChild(heart);
-      setTimeout(() => heart.remove(), 6000);
-    }
-  }
 
-  document.body.addEventListener("click", triggerHearts);
-</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const greetingMessage = document.getElementById('greeting-message');
+            const nameInput = document.getElementById('name-input');
+            const generateBtn = document.getElementById('generate-btn');
+            const linkOutput = document.getElementById('link-output');
+            const sparkleContainer = document.querySelector('.sparkle-container');
+            const body = document.body;
+
+            // 1. Check for name in URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const senderName = urlParams.get('name');
+
+            if (senderName) {
+                greetingMessage.textContent = `${decodeURIComponent(senderName)} की तरफ से आपको रक्षाबंधन की ढेरों शुभकामनाएं`;
+                greetingMessage.style.display = 'block';
+            }
+
+            // 2. Generate and copy link
+            generateBtn.addEventListener('click', function() {
+                const name = nameInput.value.trim();
+                if (name === '') {
+                    alert('कृपया अपना नाम लिखें।');
+                    return;
+                }
+
+                const baseUrl = window.location.href.split('?')[0];
+                const newUrl = `${baseUrl}?name=${encodeURIComponent(name)}`;
+                
+                const whatsappMessage = `🎁 *${name}* की तरफ से आपको और आपके परिवार को रक्षाबंधन की हार्दिक शुभकामनाएं! 🎁\n\nमेरी तरफ से यह प्यार भरा संदेश देखने के लिए नीचे दिए गए लिंक पर क्लिक करें 👇\n\n${newUrl}`;
+
+                const whatsappLink = `https://api.whatsapp.com/send?text=${encodeURIComponent(whatsappMessage)}`;
+                
+                window.open(whatsappLink, '_blank');
+
+                linkOutput.innerHTML = `आपका लिंक तैयार है! इसे कॉपी करके शेयर करें: <br><strong>${newUrl}</strong>`;
+            });
+
+            // 3. Sparkle animation on image
+            for (let i = 0; i < 20; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.top = `${Math.random() * 100}%`;
+                sparkle.style.left = `${Math.random() * 100}%`;
+                sparkle.style.animationDelay = `${Math.random() * 1.5}s`;
+                sparkle.style.animationDuration = `${1 + Math.random()}s`;
+                sparkleContainer.appendChild(sparkle);
+            }
+
+            // 4. Popping hearts background
+            const heartContainer = document.createElement('div');
+            heartContainer.className = 'hearts-bg';
+            body.prepend(heartContainer);
+            for (let i = 0; i < 15; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.style.left = `${Math.random() * 100}vw`;
+                heart.style.animationDelay = `${Math.random() * 5}s`;
+                heartContainer.appendChild(heart);
+            }
+
+            // 5. Touch ripple animation
+            document.addEventListener('click', function(e) {
+                let ripple = document.createElement('span');
+                ripple.classList.add('ripple');
+                body.appendChild(ripple);
+
+                ripple.style.left = `${e.clientX - ripple.clientWidth / 2}px`;
+                ripple.style.top = `${e.clientY - ripple.clientHeight / 2}px`;
+
+                ripple.addEventListener('animationend', () => {
+                    ripple.remove();
+                });
+            });
+        });
+    </script>
 </body>
 </html>
