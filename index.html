@@ -2,127 +2,111 @@
 <html lang="hi">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>रक्षा बंधन की शुभकामनाएँ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Raksha Bandhan</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Baloo+2&display=swap');
-
-    :root {
-      --primary: #ff4f81;
-      --accent: #ffd700;
-      --bg: linear-gradient(145deg, #fff0f5, #ffe4e1);
-      --text: #880e4f;
-    }
-
     body {
       margin: 0;
-      font-family: 'Baloo 2', cursive;
-      background: var(--bg);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      flex-direction: column;
+      padding: 0;
+      background: linear-gradient(135deg, #fff0f5, #ffe4e1);
+      font-family: 'Segoe UI', sans-serif;
       overflow-x: hidden;
-      padding: 80px 10px 100px; /* for top/bottom ad spacing */
+      position: relative;
+      text-align: center;
+    }
+    /* Top Ad */
+    #top-ad, #bottom-ad {
+      position: fixed;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 468px;
+      height: 60px;
+      z-index: 9999;
+    }
+    #top-ad {
+      top: 0;
+    }
+    #bottom-ad {
+      bottom: 0;
+    }
+
+    /* Animated Header */
+    .flash-text {
+      font-size: 2rem;
+      color: #fff;
+      background: linear-gradient(90deg, #ff69b4, #ff1493, #ff69b4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: flash 2s infinite;
+      margin-top: 80px;
+    }
+    @keyframes flash {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
     }
 
     .container {
-      background: #fff;
-      border-radius: 20px;
-      padding: 2rem;
+      margin-top: 20px;
+      padding-bottom: 100px;
+    }
+
+    .animated-image {
+      width: 90%;
       max-width: 400px;
-      width: 100%;
-      box-shadow: 0 0 30px rgba(255, 105, 180, 0.4);
-      text-align: center;
-      z-index: 1;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(255, 182, 193, 0.8);
+      animation: sparkle 2s infinite alternate;
     }
 
-    h1 {
-      color: var(--text);
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      animation: pulse 2s infinite;
-      text-shadow: 0 0 5px #fff, 0 0 10px var(--primary);
+    @keyframes sparkle {
+      from { filter: drop-shadow(0 0 5px gold); }
+      to { filter: drop-shadow(0 0 20px hotpink); }
     }
 
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
+    .name-box {
+      margin: 30px auto;
+      max-width: 400px;
     }
 
-    .image-wrapper {
-      position: relative;
-      display: inline-block;
-      margin: 1rem 0;
-    }
-
-    .image-wrapper img {
-      width: 100%;
-      border-radius: 15px;
-      box-shadow: 0 0 15px rgba(255, 105, 180, 0.3);
-    }
-
-    .sparkle {
-      position: absolute;
-      width: 12px;
-      height: 12px;
-      background: var(--accent);
-      border-radius: 50%;
-      animation: sparkle-blink 2s infinite ease-in-out;
-      opacity: 0;
-      box-shadow: 0 0 8px #fff;
-    }
-
-    @keyframes sparkle-blink {
-      0%, 100% { opacity: 0; transform: scale(0.5) rotate(0deg); }
-      50% { opacity: 1; transform: scale(1.2) rotate(45deg); }
-    }
-
-    input {
-      width: 100%;
+    input[type="text"] {
+      width: 80%;
       padding: 12px;
-      border: 2px solid var(--primary);
+      font-size: 1.1rem;
+      border: 2px solid hotpink;
       border-radius: 10px;
-      font-size: 1rem;
-      margin-bottom: 1rem;
-      text-align: center;
+      outline: none;
+      margin-bottom: 10px;
     }
 
     button {
-      padding: 10px 20px;
+      padding: 10px 15px;
+      margin: 5px;
       border: none;
-      border-radius: 8px;
-      background: var(--primary);
+      background: #ff1493;
       color: white;
-      font-weight: bold;
+      border-radius: 10px;
       cursor: pointer;
-      margin: 0.5rem;
-      transition: all 0.3s ease-in-out;
+      font-weight: bold;
     }
 
     button:hover {
-      background: #e91e63;
-      transform: scale(1.05);
-    }
-
-    .whatsapp-btn {
-      background-color: #25d366;
-    }
-
-    .link-box {
-      background: #fff0f5;
-      border: 2px dashed var(--primary);
-      padding: 10px;
-      border-radius: 10px;
-      word-break: break-word;
-      margin-top: 10px;
+      background: #c71585;
     }
 
     .greeting {
-      color: var(--text);
-      font-size: 1.2rem;
-      margin: 1rem 0;
+      margin-top: 20px;
+      font-size: 1.4rem;
+      font-weight: bold;
+      background: linear-gradient(45deg, gold, orange);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: bounce 1s infinite;
+    }
+
+    @keyframes bounce {
+      0%   { transform: scale(1); }
+      50%  { transform: scale(1.1); }
+      100% { transform: scale(1); }
     }
 
     /* Floating hearts */
@@ -130,6 +114,7 @@
       position: fixed;
       width: 100%;
       height: 100%;
+      overflow: hidden;
       top: 0;
       left: 0;
       pointer-events: none;
@@ -138,165 +123,133 @@
 
     .heart {
       position: absolute;
-      animation: floatUp 6s linear infinite;
-      font-size: 1.5rem;
-      opacity: 0.6;
-      color: #ff69b4;
+      width: 20px;
+      height: 20px;
+      background: rgba(255, 105, 180, 0.5);
+      transform: rotate(45deg);
+      animation: float 6s linear infinite;
     }
 
-    @keyframes floatUp {
-      0% { transform: translateY(100vh); opacity: 0; }
-      50% { opacity: 1; }
-      100% { transform: translateY(-10vh); opacity: 0; }
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: rgba(255, 105, 180, 0.5);
+      border-radius: 50%;
     }
 
-    /* Ads */
-    .ad-banner {
-      position: fixed;
-      width: 100%;
-      height: 60px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      background: transparent;
+    .heart::before {
+      top: -10px;
+      left: 0;
     }
 
-    .ad-top {
+    .heart::after {
+      left: -10px;
       top: 0;
     }
 
-    .ad-bottom {
-      bottom: 0;
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(45deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) rotate(45deg);
+        opacity: 0;
+      }
     }
   </style>
 </head>
-<body onclick="shootConfetti()">
+<body>
 
-  <!-- 🎉 Floating Hearts -->
-  <div class="hearts" id="heart-container"></div>
-
-  <!-- 🎁 Main Card -->
-  <div class="container">
-    <h1>🎀 Happy Raksha Bandhan 🎀</h1>
-
-    <div class="image-wrapper">
-      <img src="raksha-bandhan.jpg" alt="Raksha Bandhan">
-      <div class="sparkle" style="top: 15%; left: 25%; animation-delay: 0s;"></div>
-      <div class="sparkle" style="top: 50%; left: 80%; animation-delay: 0.3s;"></div>
-      <div class="sparkle" style="top: 75%; left: 40%; animation-delay: 0.6s;"></div>
-    </div>
-
-    <div id="greeting-box" class="greeting" style="display:none;"></div>
-
-    <div id="input-box">
-      <input type="text" id="name-input" placeholder="अपना नाम लिखें..." />
-      <button onclick="generateLink()">शुभकामना लिंक बनाएँ</button>
-    </div>
-
-    <div id="link-box" style="display:none;">
-      <p class="link-box" id="generated-link"></p>
-      <button onclick="copyLink()">लिंक कॉपी करें</button>
-      <a id="whatsapp-share" target="_blank"><button class="whatsapp-btn">WhatsApp पर शेयर करें</button></a>
-    </div>
-  </div>
-
-  <!-- 🔊 Background Music -->
-  <audio autoplay loop>
-    <source src="flute-music.mp3" type="audio/mpeg">
-  </audio>
-
-  <!-- 🎊 Confetti -->
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
-  <!-- 💘 Hearts -->
-  <script>
-    const heartContainer = document.getElementById('heart-container');
-    for (let i = 0; i < 25; i++) {
-      const heart = document.createElement('div');
-      heart.className = 'heart';
-      heart.textContent = '💖';
-      heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.animationDelay = Math.random() * 5 + 's';
-      heart.style.fontSize = Math.random() * 2 + 1 + 'rem';
-      heartContainer.appendChild(heart);
-    }
-  </script>
-
-  <!-- 🧠 Scripts -->
-  <script>
-    function getQueryParam(name) {
-      const urlParams = new URLSearchParams(window.location.search);
-      return urlParams.get(name);
-    }
-
-    function generateLink() {
-      const name = document.getElementById('name-input').value.trim();
-      if (!name) {
-        alert('कृपया नाम लिखें।');
-        return;
-      }
-      const baseURL = window.location.origin + window.location.pathname;
-      const link = `${baseURL}?name=${encodeURIComponent(name)}`;
-      document.getElementById('generated-link').textContent = link;
-      document.getElementById('link-box').style.display = 'block';
-
-      const text = `${name} की तरफ से आपको रक्षा बंधन की ढेरों शुभकामनाएँ 🎉\n\nदेखें: ${link}`;
-      document.getElementById('whatsapp-share').href = `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`;
-    }
-
-    function copyLink() {
-      const text = document.getElementById('generated-link').textContent;
-      navigator.clipboard.writeText(text).then(() => {
-        alert('लिंक कॉपी हो गया!');
-      });
-    }
-
-    function shootConfetti() {
-      confetti({
-        particleCount: 120,
-        spread: 80,
-        origin: { y: 0.6 }
-      });
-    }
-
-    window.onload = () => {
-      const name = getQueryParam('name');
-      if (name) {
-        const decoded = decodeURIComponent(name);
-        document.getElementById('greeting-box').textContent = `${decoded} की तरफ से आपको रक्षा बंधन की शुभकामनाएँ 💝`;
-        document.getElementById('greeting-box').style.display = 'block';
-        document.getElementById('input-box').style.display = 'none';
-      }
+<!-- Adsterra Top Ad -->
+<div id="top-ad">
+  <script type="text/javascript">
+    atOptions = {
+      'key' : '9f5ed8c42fb0de51562560e647d5668f',
+      'format' : 'iframe',
+      'height' : 60,
+      'width' : 468,
+      'params' : {}
     };
   </script>
+  <script type="text/javascript" src="//furtivelywhipped.com/9f5ed8c42fb0de51562560e647d5668f/invoke.js"></script>
+</div>
 
-  <!-- 🔝 Adsterra Top Banner -->
-  <div class="ad-banner ad-top">
-    <script type="text/javascript">
-      atOptions = {
-        'key' : '9f5ed8c42fb0de51562560e647d5668f',
-        'format' : 'iframe',
-        'height' : 60,
-        'width' : 468,
-        'params' : {}
-      };
-    </script>
-    <script type="text/javascript" src="//furtivelywhipped.com/9f5ed8c42fb0de51562560e647d5668f/invoke.js"></script>
+<h1 class="flash-text">🎉 Happy Raksha Bandhan 🎉</h1>
+
+<div class="container">
+  <img src="raksha-bandhan.jpg" alt="Raksha Bandhan" class="animated-image" onclick="triggerHearts()" />
+
+  <div class="name-box">
+    <input type="text" id="nameInput" placeholder="Apna naam likhein..." />
+    <div>
+      <button onclick="generateLink()">Link Copy</button>
+      <button onclick="shareWhatsApp()">WhatsApp</button>
+    </div>
   </div>
 
-  <!-- 🔚 Adsterra Bottom Banner -->
-  <div class="ad-banner ad-bottom">
-    <script type="text/javascript">
-      atOptions = {
-        'key' : '9f5ed8c42fb0de51562560e647d5668f',
-        'format' : 'iframe',
-        'height' : 60,
-        'width' : 468,
-        'params' : {}
-      };
-    </script>
-    <script type="text/javascript" src="//furtivelywhipped.com/9f5ed8c42fb0de51562560e647d5668f/invoke.js"></script>
-  </div>
+  <div id="greeting" class="greeting"></div>
+</div>
+
+<!-- Hearts background -->
+<div class="hearts" id="hearts-container"></div>
+
+<!-- Adsterra Bottom Ad -->
+<div id="bottom-ad">
+  <script type="text/javascript">
+    atOptions = {
+      'key' : '9f5ed8c42fb0de51562560e647d5668f',
+      'format' : 'iframe',
+      'height' : 60,
+      'width' : 468,
+      'params' : {}
+    };
+  </script>
+  <script type="text/javascript" src="//furtivelywhipped.com/9f5ed8c42fb0de51562560e647d5668f/invoke.js"></script>
+</div>
+
+<script>
+  // Handle greeting display from URL
+  window.onload = () => {
+    const params = new URLSearchParams(window.location.search);
+    const from = params.get("from");
+    if (from) {
+      document.getElementById("greeting").innerHTML = `<span style="font-size: 1.8rem; font-weight: bold; color: gold; text-shadow: 2px 2px 5px #d2691e;">${from} की तरफ से आपको Raksha Bandhan की ढेरों शुभकामनाएँ 💝</span>`;
+    }
+  };
+
+  function generateLink() {
+    const name = document.getElementById("nameInput").value.trim();
+    if (!name) return alert("कृपया अपना नाम भरें");
+    const link = `${window.location.origin + window.location.pathname}?from=${encodeURIComponent(name)}`;
+    navigator.clipboard.writeText(link);
+    alert("Link copied: " + link);
+  }
+
+  function shareWhatsApp() {
+    const name = document.getElementById("nameInput").value.trim();
+    if (!name) return alert("कृपया नाम भरें");
+    const link = `${window.location.origin + window.location.pathname}?from=${encodeURIComponent(name)}`;
+    const text = `🎉 ${name} की तरफ से आपको Raksha Bandhan की ढेरों शुभकामनाएँ! 🎁\n\nदेखें: ${link}`;
+    window.open(`https://wa.me/?text=${encodeURIComponent(text)}`);
+  }
+
+  // Create random hearts
+  function triggerHearts() {
+    for (let i = 0; i < 10; i++) {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+      document.getElementById('hearts-container').appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+  }
+
+  document.body.addEventListener("click", triggerHearts);
+</script>
 </body>
 </html>
