@@ -16,24 +16,33 @@
       --copy-btn-color: #007bff;
     }
 
-    html {
+    html, body {
+      margin: 0;
+      padding: 0;
       scroll-behavior: smooth;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #FF9A8B 0%, #FF6A88 50%, #FF99AC 100%);
+      color: var(--text-color);
     }
 
     body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 20px;
-      background: linear-gradient(135deg, #FF9A8B 0%, #FF6A88 50%, #FF99AC 100%);
-      color: var(--text-color);
-      text-align: center;
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      box-sizing: border-box;
     }
 
     .container {
       width: 100%;
       max-width: 500px;
-      margin: auto;
       background-color: rgba(255, 255, 255, 0.92);
       padding: 20px;
       border-radius: 20px;
@@ -41,26 +50,26 @@
       box-sizing: border-box;
       position: relative;
       z-index: 2;
+      margin-bottom: 40px;
     }
 
     .ad-container {
-      margin: 15px auto;
-      width: 468px;
-      max-width: 100%;
+      width: 100%;
+      max-width: 468px;
+      margin: 10px auto;
+      text-align: center;
     }
 
     .header-text {
       font-family: 'Hind', sans-serif;
-      font-size: 2.5em;
-      font-weight: 700;
+      font-size: 2.3em;
       color: #E44D2E;
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
-      animation: flash 2s infinite linear;
+      animation: flash 2s infinite;
     }
 
     @keyframes flash {
-      0%, 100% { color: #E44D2E; transform: scale(1); }
-      50% { color: var(--secondary-color); transform: scale(1.05); }
+      0%, 100% { color: #E44D2E; }
+      50% { color: var(--secondary-color); }
     }
 
     .image-container {
@@ -101,18 +110,12 @@
     }
 
     #greeting-message {
-      font-size: 1.8em;
+      font-size: 1.6em;
       font-weight: bold;
       color: var(--dark-red);
-      margin: 25px 0;
-      text-shadow: 0 0 5px #ffd93d88, 1px 1px 1px var(--secondary-color), 1px 1px 5px rgba(0,0,0,0.4);
-      animation: animate-3d 1.5s ease-in-out infinite alternate;
+      margin: 20px 0;
+      text-shadow: 0 0 5px #ffd93d88, 1px 1px var(--secondary-color), 1px 1px 5px rgba(0,0,0,0.4);
       display: none;
-    }
-
-    @keyframes animate-3d {
-      from { transform: rotateY(-10deg) rotateX(3deg) scale(1); }
-      to { transform: rotateY(10deg) rotateX(-3deg) scale(1.03); }
     }
 
     .form-container { margin-top: 20px; }
@@ -127,15 +130,9 @@
       box-sizing: border-box;
     }
 
-    #name-input:focus {
-      border-color: var(--primary-color);
-      outline: none;
-    }
-
     #generate-btn {
-      display: block;
       width: 100%;
-      margin: 15px auto 0;
+      margin-top: 15px;
       padding: 15px;
       background: linear-gradient(45deg, #28a745, #218838);
       color: white;
@@ -145,12 +142,6 @@
       font-weight: bold;
       cursor: pointer;
       box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    #generate-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(40, 167, 69, 0.6);
     }
 
     #link-container {
@@ -161,7 +152,6 @@
     .generated-link-wrapper {
       display: flex;
       flex-direction: column;
-      align-items: center;
       gap: 10px;
     }
 
@@ -184,12 +174,6 @@
       color: white;
       border-radius: 8px;
       cursor: pointer;
-      font-weight: bold;
-      transition: background-color 0.3s;
-    }
-
-    #copy-btn:hover {
-      background: #0056b3;
     }
 
     .hearts-bg {
@@ -197,7 +181,7 @@
       top: 0; left: 0;
       width: 100%; height: 100%;
       pointer-events: none;
-      z-index: 1;
+      z-index: 0;
     }
 
     .heart {
@@ -215,20 +199,17 @@
       width: 20px;
       height: 32px;
       background: rgba(255, 69, 114, 0.85);
-      box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
       border-radius: 10px 10px 0 0;
     }
 
     .heart::before {
       left: 20px;
       transform: rotate(-45deg);
-      transform-origin: 0 100%;
     }
 
     .heart::after {
       left: 0;
       transform: rotate(45deg);
-      transform-origin: 100% 100%;
     }
 
     @keyframes pop-heart {
@@ -238,14 +219,12 @@
 
     @media (max-width: 480px) {
       .header-text { font-size: 1.8em; }
-      .ad-container { width: 100%; padding: 0 10px; }
-      .image-container { max-width: 100%; }
       .container { padding: 15px; }
+      .ad-container { padding: 0 10px; }
     }
   </style>
 </head>
 <body>
-
   <div class="hearts-bg"></div>
 
   <div class="ad-container">
@@ -255,27 +234,28 @@
     <script type="text/javascript" src="//furtivelywhipped.com/9f5ed8c42fb0de51562560e647d5668f/invoke.js"></script>
   </div>
 
-  <div class="container">
-    <h1 class="header-text">Happy Raksha Bandhan</h1>
-    <div id="greeting-message"></div>
-    <div class="image-container">
-      <img id="rakhi-image" src="raksha-bandhan.jpg" alt="Raksha Bandhan" />
-      <div class="sparkle-container"></div>
-    </div>
-
-    <div class="form-container">
-      <p>नीचे बॉक्स में अपना नाम लिखें और शुभकामनाओं का लिंक बनाएं:</p>
-      <input type="text" id="name-input" placeholder="यहाँ अपना नाम लिखें" />
-      <button id="generate-btn">व्हाट्सएप पर शेयर करें</button>
-      <div id="link-container">
-        <p>या इस लिंक को कॉपी करके कहीं भी शेयर करें:</p>
-        <div class="generated-link-wrapper">
-          <input type="text" id="generated-link" readonly />
-          <button id="copy-btn">कॉपी करें</button>
+  <main>
+    <div class="container">
+      <h1 class="header-text">Happy Raksha Bandhan</h1>
+      <div id="greeting-message"></div>
+      <div class="image-container">
+        <img id="rakhi-image" src="raksha-bandhan.jpg" alt="Raksha Bandhan" />
+        <div class="sparkle-container"></div>
+      </div>
+      <div class="form-container">
+        <p>नीचे बॉक्स में अपना नाम लिखें और शुभकामनाओं का लिंक बनाएं:</p>
+        <input type="text" id="name-input" placeholder="यहाँ अपना नाम लिखें" />
+        <button id="generate-btn">व्हाट्सएप पर शेयर करें</button>
+        <div id="link-container">
+          <p>या इस लिंक को कॉपी करके कहीं भी शेयर करें:</p>
+          <div class="generated-link-wrapper">
+            <input type="text" id="generated-link" readonly />
+            <button id="copy-btn">कॉपी करें</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </main>
 
   <div class="ad-container">
     <script type="text/javascript">
@@ -285,7 +265,7 @@
   </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       const greetingMessage = document.getElementById('greeting-message');
       const nameInput = document.getElementById('name-input');
       const generateBtn = document.getElementById('generate-btn');
@@ -302,7 +282,7 @@
         greetingMessage.style.display = 'block';
       }
 
-      generateBtn.addEventListener('click', function() {
+      generateBtn.addEventListener('click', function () {
         const name = nameInput.value.trim();
         if (name === '') {
           alert('कृपया अपना नाम लिखें।');
@@ -316,7 +296,7 @@
         window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(whatsappMessage)}`, '_blank');
       });
 
-      copyBtn.addEventListener('click', function() {
+      copyBtn.addEventListener('click', function () {
         navigator.clipboard.writeText(generatedLinkInput.value).then(() => {
           copyBtn.textContent = 'कॉपी हुआ!';
           setTimeout(() => { copyBtn.textContent = 'कॉपी करें'; }, 2000);
