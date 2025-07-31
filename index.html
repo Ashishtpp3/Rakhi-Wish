@@ -2,47 +2,146 @@
 <html lang="hi">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>रक्षा बंधन की शुभकामनाएँ</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Tiro+Devanagari+Hindi:ital@1&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Baloo+2&display=swap');
 
     :root {
-      --primary-color: #ff4081;
-      --secondary-color: #ffc107;
-      --bg-gradient: linear-gradient(135deg, #ffe0ec, #ffd3e0);
-      --text-color: #6a1b9a;
+      --primary: #ff4f81;
+      --accent: #ffd700;
+      --bg: linear-gradient(145deg, #fff0f5, #ffe4e1);
+      --text: #880e4f;
     }
 
     body {
       margin: 0;
-      padding: 0;
-      background: var(--bg-gradient);
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Baloo 2', cursive;
+      background: var(--bg);
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
+      flex-direction: column;
       overflow-x: hidden;
+      padding: 80px 10px 100px; /* for top/bottom ad spacing */
     }
 
+    .container {
+      background: #fff;
+      border-radius: 20px;
+      padding: 2rem;
+      max-width: 400px;
+      width: 100%;
+      box-shadow: 0 0 30px rgba(255, 105, 180, 0.4);
+      text-align: center;
+      z-index: 1;
+    }
+
+    h1 {
+      color: var(--text);
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      animation: pulse 2s infinite;
+      text-shadow: 0 0 5px #fff, 0 0 10px var(--primary);
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .image-wrapper {
+      position: relative;
+      display: inline-block;
+      margin: 1rem 0;
+    }
+
+    .image-wrapper img {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(255, 105, 180, 0.3);
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: sparkle-blink 2s infinite ease-in-out;
+      opacity: 0;
+      box-shadow: 0 0 8px #fff;
+    }
+
+    @keyframes sparkle-blink {
+      0%, 100% { opacity: 0; transform: scale(0.5) rotate(0deg); }
+      50% { opacity: 1; transform: scale(1.2) rotate(45deg); }
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid var(--primary);
+      border-radius: 10px;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background: var(--primary);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 0.5rem;
+      transition: all 0.3s ease-in-out;
+    }
+
+    button:hover {
+      background: #e91e63;
+      transform: scale(1.05);
+    }
+
+    .whatsapp-btn {
+      background-color: #25d366;
+    }
+
+    .link-box {
+      background: #fff0f5;
+      border: 2px dashed var(--primary);
+      padding: 10px;
+      border-radius: 10px;
+      word-break: break-word;
+      margin-top: 10px;
+    }
+
+    .greeting {
+      color: var(--text);
+      font-size: 1.2rem;
+      margin: 1rem 0;
+    }
+
+    /* Floating hearts */
     .hearts {
       position: fixed;
-      top: 0;
-      left: 0;
       width: 100%;
       height: 100%;
-      overflow: hidden;
-      z-index: 0;
+      top: 0;
+      left: 0;
       pointer-events: none;
+      z-index: 0;
     }
 
     .heart {
       position: absolute;
-      color: var(--primary-color);
-      font-size: 1.5rem;
       animation: floatUp 6s linear infinite;
+      font-size: 1.5rem;
       opacity: 0.6;
+      color: #ff69b4;
     }
 
     @keyframes floatUp {
@@ -51,132 +150,81 @@
       100% { transform: translateY(-10vh); opacity: 0; }
     }
 
-    .container {
-      background-color: rgba(255, 255, 255, 0.8);
-      padding: 2rem;
-      border-radius: 20px;
-      text-align: center;
-      max-width: 400px;
-      width: 90%;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      z-index: 1;
-      position: relative;
-    }
-
-    h1 {
-      font-family: 'Tiro Devanagari Hindi', serif;
-      font-size: 2rem;
-      color: var(--text-color);
-      margin-bottom: 1rem;
-      animation: glow 2s infinite ease-in-out;
-    }
-
-    @keyframes glow {
-      0%, 100% { text-shadow: 0 0 5px #fff, 0 0 15px var(--primary-color); }
-      50% { text-shadow: 0 0 20px #fff, 0 0 30px var(--primary-color); }
-    }
-
-    .rakhi-img {
+    /* Ads */
+    .ad-banner {
+      position: fixed;
       width: 100%;
-      border-radius: 15px;
-      margin-bottom: 1rem;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      position: relative;
-      animation: sparkle 2s infinite alternate;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      background: transparent;
     }
 
-    @keyframes sparkle {
-      0% { filter: drop-shadow(0 0 5px var(--secondary-color)); }
-      100% { filter: drop-shadow(0 0 15px var(--secondary-color)); }
+    .ad-top {
+      top: 0;
     }
 
-    .input-box {
-      margin-top: 1rem;
+    .ad-bottom {
+      bottom: 0;
     }
-
-    input {
-      padding: 10px;
-      width: 100%;
-      border-radius: 10px;
-      border: 2px solid var(--primary-color);
-      font-size: 1rem;
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-
-    button {
-      background-color: var(--primary-color);
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      font-size: 1rem;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    button:hover {
-      background-color: #d81b60;
-      transform: scale(1.05);
-    }
-
-    .greeting {
-      font-size: 1.2rem;
-      color: #4a148c;
-      font-weight: bold;
-      font-family: 'Tiro Devanagari Hindi', serif;
-      margin-bottom: 1rem;
-      animation: fadeIn 2s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(10px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-
-    .link-box {
-      word-wrap: break-word;
-      background-color: #fff3f7;
-      padding: 10px;
-      border-radius: 10px;
-      border: 1px dashed var(--primary-color);
-      font-size: 0.9rem;
-    }
-
   </style>
 </head>
-<body>
+<body onclick="shootConfetti()">
+
+  <!-- 🎉 Floating Hearts -->
   <div class="hearts" id="heart-container"></div>
 
+  <!-- 🎁 Main Card -->
   <div class="container">
-    <h1>🎉 Happy Raksha Bandhan 🎉</h1>
-    <img src="raksha-bandhan.jpg" alt="Raksha Bandhan" class="rakhi-img">
+    <h1>🎀 Happy Raksha Bandhan 🎀</h1>
+
+    <div class="image-wrapper">
+      <img src="raksha-bandhan.jpg" alt="Raksha Bandhan">
+      <div class="sparkle" style="top: 15%; left: 25%; animation-delay: 0s;"></div>
+      <div class="sparkle" style="top: 50%; left: 80%; animation-delay: 0.3s;"></div>
+      <div class="sparkle" style="top: 75%; left: 40%; animation-delay: 0.6s;"></div>
+    </div>
 
     <div id="greeting-box" class="greeting" style="display:none;"></div>
 
-    <div class="input-box" id="input-box">
+    <div id="input-box">
       <input type="text" id="name-input" placeholder="अपना नाम लिखें..." />
       <button onclick="generateLink()">शुभकामना लिंक बनाएँ</button>
     </div>
 
     <div id="link-box" style="display:none;">
       <p class="link-box" id="generated-link"></p>
+      <button onclick="copyLink()">लिंक कॉपी करें</button>
+      <a id="whatsapp-share" target="_blank"><button class="whatsapp-btn">WhatsApp पर शेयर करें</button></a>
     </div>
   </div>
 
+  <!-- 🔊 Background Music -->
+  <audio autoplay loop>
+    <source src="flute-music.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- 🎊 Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <!-- 💘 Hearts -->
   <script>
-    // Heart animation background
     const heartContainer = document.getElementById('heart-container');
-    for (let i = 0; i < 30; i++) {
-      let heart = document.createElement('div');
+    for (let i = 0; i < 25; i++) {
+      const heart = document.createElement('div');
       heart.className = 'heart';
-      heart.style.left = `${Math.random() * 100}vw`;
-      heart.style.animationDelay = `${Math.random() * 6}s`;
-      heart.style.fontSize = `${Math.random() * 2 + 1}rem`;
       heart.textContent = '💖';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDelay = Math.random() * 5 + 's';
+      heart.style.fontSize = Math.random() * 2 + 1 + 'rem';
       heartContainer.appendChild(heart);
     }
+  </script>
 
+  <!-- 🧠 Scripts -->
+  <script>
     function getQueryParam(name) {
       const urlParams = new URLSearchParams(window.location.search);
       return urlParams.get(name);
@@ -184,26 +232,71 @@
 
     function generateLink() {
       const name = document.getElementById('name-input').value.trim();
-      if (name === '') {
+      if (!name) {
         alert('कृपया नाम लिखें।');
         return;
       }
-      const encodedName = encodeURIComponent(name);
       const baseURL = window.location.origin + window.location.pathname;
-      const link = `${baseURL}?name=${encodedName}`;
-
+      const link = `${baseURL}?name=${encodeURIComponent(name)}`;
       document.getElementById('generated-link').textContent = link;
       document.getElementById('link-box').style.display = 'block';
+
+      const text = `${name} की तरफ से आपको रक्षा बंधन की ढेरों शुभकामनाएँ 🎉\n\nदेखें: ${link}`;
+      document.getElementById('whatsapp-share').href = `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`;
     }
 
-    window.onload = function() {
-      const sender = getQueryParam('name');
-      if (sender) {
-        const decoded = decodeURIComponent(sender);
-        document.getElementById('greeting-box').textContent = `${decoded} की तरफ से आपको रक्षा बंधन की ढेरों शुभकामनाएँ 💖`;
+    function copyLink() {
+      const text = document.getElementById('generated-link').textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        alert('लिंक कॉपी हो गया!');
+      });
+    }
+
+    function shootConfetti() {
+      confetti({
+        particleCount: 120,
+        spread: 80,
+        origin: { y: 0.6 }
+      });
+    }
+
+    window.onload = () => {
+      const name = getQueryParam('name');
+      if (name) {
+        const decoded = decodeURIComponent(name);
+        document.getElementById('greeting-box').textContent = `${decoded} की तरफ से आपको रक्षा बंधन की शुभकामनाएँ 💝`;
         document.getElementById('greeting-box').style.display = 'block';
+        document.getElementById('input-box').style.display = 'none';
       }
     };
   </script>
+
+  <!-- 🔝 Adsterra Top Banner -->
+  <div class="ad-banner ad-top">
+    <script type="text/javascript">
+      atOptions = {
+        'key' : '9f5ed8c42fb0de51562560e647d5668f',
+        'format' : 'iframe',
+        'height' : 60,
+        'width' : 468,
+        'params' : {}
+      };
+    </script>
+    <script type="text/javascript" src="//furtivelywhipped.com/9f5ed8c42fb0de51562560e647d5668f/invoke.js"></script>
+  </div>
+
+  <!-- 🔚 Adsterra Bottom Banner -->
+  <div class="ad-banner ad-bottom">
+    <script type="text/javascript">
+      atOptions = {
+        'key' : '9f5ed8c42fb0de51562560e647d5668f',
+        'format' : 'iframe',
+        'height' : 60,
+        'width' : 468,
+        'params' : {}
+      };
+    </script>
+    <script type="text/javascript" src="//furtivelywhipped.com/9f5ed8c42fb0de51562560e647d5668f/invoke.js"></script>
+  </div>
 </body>
 </html>
