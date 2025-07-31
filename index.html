@@ -13,6 +13,7 @@
             --text-color: #4A4A4A;
             --bg-color: #FFF8E1;
             --golden-color: #FFD700;
+            --dark-red: #8B0000;
         }
 
         body {
@@ -26,16 +27,15 @@
             position: relative;
         }
 
-        /* Main content container */
         .container {
             max-width: 500px;
             margin: auto;
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(255, 255, 255, 0.92);
             padding: 25px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             position: relative;
-            z-index: 2; /* Main content ko hearts ke upar rakhega */
+            z-index: 2;
         }
 
         .ad-container {
@@ -103,80 +103,35 @@
         #greeting-message {
             font-size: 1.8em;
             font-weight: bold;
-            color: var(--golden-color);
+            color: var(--dark-red); /* Changed color */
             margin: 25px 0;
-            text-shadow: 1px 1px 0 #c08d00, 2px 2px 0 #a07400, 3px 3px 0 #805b00, 4px 4px 8px rgba(0,0,0,0.5);
+            /* Updated text-shadow for better visibility */
+            text-shadow: 0 0 5px #ffd93d88, 1px 1px 1px var(--secondary-color), 1px 1px 5px rgba(0,0,0,0.4);
             animation: animate-3d 1.5s ease-in-out infinite alternate;
             display: none;
         }
 
         @keyframes animate-3d {
-            from { transform: rotateY(-15deg) rotateX(5deg) scale(1); }
-            to { transform: rotateY(15deg) rotateX(-5deg) scale(1.05); }
+            from { transform: rotateY(-10deg) rotateX(3deg) scale(1); }
+            to { transform: rotateY(10deg) rotateX(-3deg) scale(1.03); }
         }
 
-        .form-container {
-            margin-top: 20px;
-        }
+        .form-container { margin-top: 20px; }
+        #name-input { width: 80%; padding: 12px; border: 2px solid var(--primary-color); border-radius: 10px; font-size: 1.1em; text-align: center; }
+        #generate-btn { display: block; width: 85%; margin: 15px auto 0; padding: 15px; background: linear-gradient(45deg, var(--primary-color), #f78fb3); color: white; border: none; border-radius: 10px; font-size: 1.2em; font-weight: bold; cursor: pointer; }
 
-        #name-input {
-            width: 80%;
-            padding: 12px;
-            border: 2px solid var(--primary-color);
-            border-radius: 10px;
-            font-size: 1.1em;
-            text-align: center;
-        }
+        /* Styles for Link Output and Copy Button */
+        #link-container { margin-top: 20px; display: none; }
+        .generated-link-wrapper { display: flex; justify-content: center; margin-top: 10px; }
+        #generated-link { width: 60%; padding: 10px; border: 1px solid #ccc; border-radius: 8px 0 0 8px; font-size: 0.9em; background: #f0f0f0; border-right: none; }
+        #copy-btn { padding: 10px 15px; border: 1px solid var(--primary-color); background: var(--primary-color); color: white; border-radius: 0 8px 8px 0; cursor: pointer; font-weight: bold; transition: background-color 0.3s; }
+        #copy-btn:hover { background: #e05a5a; }
 
-        #generate-btn {
-            display: block;
-            width: 85%;
-            margin: 15px auto 0;
-            padding: 15px;
-            background: linear-gradient(45deg, var(--primary-color), #f78fb3);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 1.2em;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        #link-output {
-            margin-top: 15px;
-            font-size: 0.9em;
-            color: var(--text-color);
-            word-wrap: break-word;
-        }
-
-        /* Popping Hearts Background Animation */
-        .heart {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            opacity: 0;
-            animation: pop-heart 5s linear infinite;
-            z-index: 1; /* Hearts ko content ke piche rakhega */
-        }
-        .heart::before, .heart::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            width: 10px;
-            height: 16px;
-            background: rgba(255, 107, 139, 0.5); /* Translucent hearts */
-            border-radius: 5px 5px 0 0;
-        }
-        .heart::before {
-            left: 10px;
-            transform: rotate(-45deg);
-            transform-origin: 0 100%;
-        }
-        .heart::after {
-            left: 0;
-            transform: rotate(45deg);
-            transform-origin: 100% 100%;
-        }
+        /* Popping Hearts Background */
+        .heart { position: absolute; width: 20px; height: 20px; opacity: 0; animation: pop-heart 5s linear infinite; z-index: 1; }
+        .heart::before, .heart::after { content: ''; position: absolute; top: 0; width: 10px; height: 16px; background: rgba(255, 107, 139, 0.5); border-radius: 5px 5px 0 0; }
+        .heart::before { left: 10px; transform: rotate(-45deg); transform-origin: 0 100%; }
+        .heart::after { left: 0; transform: rotate(45deg); transform-origin: 100% 100%; }
 
         @keyframes pop-heart {
             0% { transform: translateY(0) scale(0.5); opacity: 0; }
@@ -185,46 +140,26 @@
         }
         
         /* Touch Animation */
-        .ripple {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(255, 217, 61, 0.5);
-            transform: scale(0);
-            animation: ripple-effect 0.6s linear;
-            pointer-events: none;
-        }
-
-        @keyframes ripple-effect {
-            to {
-                transform: scale(4);
-                opacity: 0;
-            }
-        }
-
+        .ripple { position: absolute; border-radius: 50%; background: rgba(255, 217, 61, 0.5); transform: scale(0); animation: ripple-effect 0.6s linear; pointer-events: none; }
+        @keyframes ripple-effect { to { transform: scale(4); opacity: 0; } }
     </style>
 </head>
 <body>
 
     <!-- Adsterra Top Banner Ad -->
     <div class="ad-container">
-        <script type="text/javascript">
-            atOptions = {'key' : '9f5ed8c42fb0de51562560e647d5668f', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {}};
-        </script>
+        <script type="text/javascript"> atOptions = {'key' : '9f5ed8c42fb0de51562560e647d5668f', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {}}; </script>
         <script type="text/javascript" src="//furtivelywhipped.com/9f5ed8c42fb0de51562560e647d5668f/invoke.js"></script>
     </div>
 
     <div class="container">
-
         <h1 class="header-text">Happy Raksha Bandhan</h1>
-
         <div id="greeting-message"></div>
-
         <div class="image-container">
             <!-- ================================================================== -->
             <!-- === अपनी इमेज का URL या BASE64 कोड यहाँ पेस्ट करें === -->
             <!-- ================================================================== -->
             <img id="rakhi-image" src="https://i.postimg.cc/tJ7gssW7/rakhi-placeholder.jpg" alt="Raksha Bandhan" />
-            
             <div class="sparkle-container"></div>
         </div>
 
@@ -232,16 +167,21 @@
             <p>नीचे बॉक्स में अपना नाम लिखें और शुभकामनाओं का लिंक बनाएं:</p>
             <input type="text" id="name-input" placeholder="यहाँ अपना नाम लिखें">
             <button id="generate-btn">व्हाट्सएप पर शेयर करें</button>
-            <div id="link-output"></div>
+            
+            <!-- New Link Output and Copy Button Area -->
+            <div id="link-container">
+                <p>या इस लिंक को कॉपी करके कहीं भी शेयर करें:</p>
+                <div class="generated-link-wrapper">
+                    <input type="text" id="generated-link" readonly>
+                    <button id="copy-btn">कॉपी करें</button>
+                </div>
+            </div>
         </div>
-
     </div>
     
     <!-- Adsterra Bottom Banner Ad -->
     <div class="ad-container">
-        <script type="text/javascript">
-            atOptions = {'key' : '9f5ed8c42fb0de51562560e647d5668f', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {}};
-        </script>
+        <script type="text/javascript"> atOptions = {'key' : '9f5ed8c42fb0de51562560e647d5668f', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {}}; </script>
         <script type="text/javascript" src="//furtivelywhipped.com/9f5ed8c42fb0de51562560e647d5668f/invoke.js"></script>
     </div>
 
@@ -250,11 +190,15 @@
             const greetingMessage = document.getElementById('greeting-message');
             const nameInput = document.getElementById('name-input');
             const generateBtn = document.getElementById('generate-btn');
-            const linkOutput = document.getElementById('link-output');
             const sparkleContainer = document.querySelector('.sparkle-container');
             const body = document.body;
+            
+            // New elements for copy functionality
+            const linkContainer = document.getElementById('link-container');
+            const generatedLinkInput = document.getElementById('generated-link');
+            const copyBtn = document.getElementById('copy-btn');
 
-            // Check for name in URL
+            // Check for name in URL on page load
             const urlParams = new URLSearchParams(window.location.search);
             const senderName = urlParams.get('name');
             if (senderName) {
@@ -262,7 +206,7 @@
                 greetingMessage.style.display = 'block';
             }
 
-            // Generate link
+            // Generate and share link
             generateBtn.addEventListener('click', function() {
                 const name = nameInput.value.trim();
                 if (name === '') {
@@ -271,35 +215,52 @@
                 }
                 const baseUrl = window.location.href.split('?')[0];
                 const newUrl = `${baseUrl}?name=${encodeURIComponent(name)}`;
+                
+                // Show the copy link section
+                generatedLinkInput.value = newUrl;
+                linkContainer.style.display = 'block';
+                
+                // Create WhatsApp message and open it
                 const whatsappMessage = `🎁 *${name}* की तरफ से आपको और आपके परिवार को रक्षाबंधन की हार्दिक शुभकामनाएं! 🎁\n\nमेरी तरफ से यह प्यार भरा संदेश देखने के लिए नीचे दिए गए लिंक पर क्लिक करें 👇\n\n${newUrl}`;
                 const whatsappLink = `https://api.whatsapp.com/send?text=${encodeURIComponent(whatsappMessage)}`;
                 window.open(whatsappLink, '_blank');
             });
 
-            // Sparkle animation
+            // Copy button functionality
+            copyBtn.addEventListener('click', function() {
+                navigator.clipboard.writeText(generatedLinkInput.value).then(() => {
+                    copyBtn.textContent = 'कॉपी हुआ!';
+                    setTimeout(() => {
+                        copyBtn.textContent = 'कॉपी करें';
+                    }, 2000);
+                }).catch(err => {
+                    alert('लिंक कॉपी नहीं हो सका।');
+                });
+            });
+
+            // Sparkle animation on image
             for (let i = 0; i < 20; i++) {
                 const sparkle = document.createElement('div');
                 sparkle.className = 'sparkle';
                 sparkle.style.top = `${Math.random() * 100}%`;
                 sparkle.style.left = `${Math.random() * 100}%`;
                 sparkle.style.animationDelay = `${Math.random() * 1.5}s`;
-                sparkle.style.animationDuration = `${1 + Math.random()}s`;
                 sparkleContainer.appendChild(sparkle);
             }
 
-            // **NEW: Popping Hearts Background**
+            // Popping Hearts background
             for (let i = 0; i < 15; i++) {
                 const heart = document.createElement('div');
                 heart.className = 'heart';
                 heart.style.left = `${Math.random() * 100}vw`;
-                heart.style.animationDuration = `${2 + Math.random() * 3}s`; // Random duration
+                heart.style.animationDuration = `${2 + Math.random() * 3}s`;
                 heart.style.animationDelay = `${Math.random() * 5}s`;
-                body.prepend(heart); // Prepend to add it behind other elements
+                body.prepend(heart);
             }
             
             // Touch ripple animation
             document.addEventListener('click', function(e) {
-                if (e.target.id === 'generate-btn') return; // Don't ripple on button
+                if (e.target.tagName === 'BUTTON' || e.target.tagName === 'INPUT') return;
                 let ripple = document.createElement('span');
                 ripple.classList.add('ripple');
                 body.appendChild(ripple);
